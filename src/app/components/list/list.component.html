@@ -1,0 +1,20 @@
+<section id="seriesList">
+    <div class="seriesListBox" *ngIf="seriesListData">
+      <div [id]="'seriesElem' + i" class="seriesElem"
+           *ngFor="let seriesData of seriesListData;let i = index"
+           (appDeferLoad)="seriesData.show = true">
+        <div class="card" *ngIf="seriesData.show === true">
+          <img [src]="seriesData.thumbnails[0].src" alt="Not supported" (mouseenter)="elemOver(textInformation,true)"
+               (mouseleave)="elemOver(textInformation,false)">
+          <div class="holder" #textInformation (mouseenter)="elemOver(textInformation,true)"
+               (mouseleave)="elemOver(textInformation,false)">
+            <div class="title"><span class="textFormat">{{seriesData.title}}</span></div>
+            <div class="description">
+              <small class="textFormat">{{seriesData.description}}</small>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</section>
+
